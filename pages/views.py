@@ -8,7 +8,12 @@ def home_view(request, *args, **kwargs):
 
 
 def about_view(request, *args, **kwargs):
-    return render(request, "about.html", {})
+    my_context = {
+        "my_text": "This about us",
+        "my_number": 123,
+        "my_list": [123, 456, 789]
+    }
+    return render(request, "about.html", my_context)
 
 
 def contact_view(*args, **kwargs):
