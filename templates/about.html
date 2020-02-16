@@ -10,8 +10,14 @@
 </ul>
 
 <ul>
-{% for my_sub_item in  my_list%}
-<li> {{ forloop.counter }} - {{ my_sub_item }}</li>
+{% for item in  my_list%}
+{% if item == 123 %}
+<li> {{ forloop.counter }} - {{ item|add:1 }}</li>
+{% elif item == 789 %}
+<li> {{ forloop.counter }} - {{ item|add:1 }}</li>
+{% else %}
+<li> {{ forloop.counter }} - {{ item }}</li>
+{% endif %}
 {% endfor %}
 </ul>
   {% endblock %}
