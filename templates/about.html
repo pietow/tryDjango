@@ -1,8 +1,14 @@
   {% extends 'base.html' %}
   {% block content %}
   <h1>About</h1>
+  <h3> {{ title|title }} </h3>
 
-  <p> {{ my_text }}, {{ my_number }} </p>
+{{ my_html|safe }}
+{{ my_html|striptags }}</br>
+{{ my_html|slugify }}
+
+
+  <p> {{ my_number }} </p>
 
 <ul>
   <li>Item 1</li>
