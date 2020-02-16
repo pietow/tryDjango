@@ -5,7 +5,7 @@ from .models import Product
 
 
 class ProductForm(forms.ModelForm):
-    
+
     class Meta:
         model = Product
         fields = [
@@ -13,3 +13,9 @@ class ProductForm(forms.ModelForm):
             'description',
             'price'
         ]
+
+
+class rawProductForm(forms.Form):
+    title       = forms.CharField()
+    description = forms.CharField()
+    price       = forms.DecimalField()

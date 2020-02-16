@@ -2,7 +2,11 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<form action="" method='POST'> {% csrf_token %}
+<form action="." method='POST'> {% csrf_token %}
+{% comment '' %}
+form is saved in context dict in view
+{{ form.as_ul }}
+{% endcomment %}
 {{ form.as_p }}
 <input type="submit" value='Save'>
 </form>
