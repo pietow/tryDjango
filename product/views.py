@@ -17,14 +17,27 @@ from .forms import ProductForm, rawProductForm
 #	return render(request, "product/product_create.html", context)
   
 def product_create_view(request):
-    form = ProductForm(request.POST or None)
-    if form.is_valid():
-        form.save()
-        form = ProductForm() #empties text fields after submission
-    context = {
-        'form': form
-    }
-    return render(request, "product/product_create.html", context)
+	initial_data = {
+		"title": "awesome"
+		}
+	obj = Product.objects.get(id=1)
+	form = ProductForm(request.POST or None, initial=initial_data, instance=obj)
+	if form.is_valid():
+		form.save()
+	context = {
+	    'form': form
+	}
+	return render(request, "product/product_create.html", context)
+
+#def product_create_view(request):
+#    form = ProductForm(request.POST or None)
+#    if form.is_valid():
+#        form.save()
+#        form = ProductForm() #empties text fields after submission
+#    context = {
+#        'form': form
+#    }
+#    return render(request, "product/product_create.html", context)
 
 def product_detail_view(request):
 	obj = Product.objects.get(id=1)
