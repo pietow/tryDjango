@@ -5,6 +5,22 @@ from .models import Course
 # Create your views here.
 
 
+class CourseListView(View):
+    template_name = 'courses/course_list.html'
+    queryset = Course.objects.all()
+
+    def get_queryset(self):
+        return self.queryset
+
+    def get(self, request, *args, **kwargs):
+        context = {'object_list': self.get_queryset()}
+        return render(request, self.template_name, context)
+
+
+class MyListView(CourseListView):
+    queryset = Course.objects.filter(id=1)
+
+
 class CourseView(View):
     template_name = 'courses/courses_detail.html'
 
