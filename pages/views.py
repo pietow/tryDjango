@@ -1,5 +1,6 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
+from product.models import Product
 
 
 # Create your views here.
@@ -7,7 +8,8 @@ def home_view(request, *args, **kwargs):
     return render(request, "home.html", {})
 
 
-def about_view(request, *args, **kwargs):
+def about_view(request, my_id, *args, **kwargs):
+    obj = get_object_or_404(Product, id=my_id)
     my_context = {
         "title"    : "this about us",
         "my_number": 123,

@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
+from django.urls import reverse
 # Create your models here.
 
 
@@ -12,4 +13,5 @@ class Product(models.Model):
     features = models.BooleanField(_("features"), default=True)
 
     def get_absolute_url(self):
-        return f"product/{self.id}/"
+        return reverse("product:product-detail", kwargs={"my_id": self.id}) #f"product/{self.id}/"
+        print('bla')
