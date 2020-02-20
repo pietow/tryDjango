@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404
+from django.urls import reverse
 from .forms import ArticleModelForm
 from django.views.generic import (
     CreateView,
@@ -52,3 +53,16 @@ class ArticleUpdateView(UpdateView):
         print(form.cleaned_data)
         return super().form_valid(form)
 
+
+class ArticleDeleteView(DeleteView):
+    template_name = 'article/article_delete.html'
+
+    # queryset = Article.objects.all()
+    # queries through our article table
+
+    def get_object(self):
+        id_ = self.kwargs.get("id")
+        return get_object_or_404(Article, id=id_)
+
+    def get_success_url(self):
+        return reverse('articles:article-list')

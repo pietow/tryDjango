@@ -3,7 +3,8 @@ from .views import (
     ArticleUpdateView,
     ArticleCreateView,
     ArticleListView,
-    ArticleDetailView
+    ArticleDetailView,
+    ArticleDeleteView
 )
 
 app_name = 'articles'
@@ -14,6 +15,7 @@ urlpatterns = [
     # The keyword argument must be pk,
     # pk is defined by DetailView
     # pk is overwritten in def get_object of ArticleDetailView
-    path('<int:id>/update/', ArticleUpdateView.as_view(), name='article-update')
+    path('<int:id>/update/', ArticleUpdateView.as_view(), name='article-update'),
+    path('<int:id>/delete/', ArticleDeleteView.as_view(), name='article-delete')
 
 ]
